@@ -1,0 +1,358 @@
+:root {
+  /* comportamiento / efecto */
+  --perspective: 1400px;   /* profundidad de la escena */
+  --tilt: 24;              /* ángulo máximo de inclinación (16->24 para más fuerza) */
+  --translate-max: 14px;   /* “magnetismo” hacia el cursor */
+  --pop-scale: 1.035;      /* zoom al hover (sutil) */
+  --mx: 50%;               /* mouse x en % dentro de la tarjeta */
+  --my: 50%;               /* mouse y en % dentro de la tarjeta */
+
+  /* offsets de sombra (los setea el JS en runtime) */
+  --sx: 0px;
+  --sy: 0px;
+  --shadow-blur: 80px;
+  --shadow-inner-blur: 20px;
+
+  /* radio y tamaños */
+  --card-radius: 22px;
+  --edge-radius: 180px;
+  --glow-radius: 300px;
+
+  --bg1: #3a3a3f;
+  --bg2: #202125;
+  --bg3: #0c0c0e;
+  --text: #f2f2f2;
+
+  /* tarjeta */
+  --card-top:  #2b2c31;
+  --card-bot:  #16171a;
+  
+  /* “glow” / luces */
+  --edge-alpha: 0.06;         /* borde suave al pasar el mouse (0 = apagado) */
+  --glow-color-rgb: 120,170,255;
+  --glow-alpha: 0.20;         /* intensidad del glow */
+  --glow-opacity: 0.40;       /* opacidad total de la capa glow */
+
+  /* sombras */
+  --outer-shadow-a: 0.55;     /* sombra grande */
+  --inner-shadow-a: 0.45;     /* sombra inner */
+  --hover-outer-shadow-a: 0.58;
+  --hover-inner-shadow-a: 0.50;
+
+  --outer-shadow-a: 0;     /* sombra grande */
+  --inner-shadow-a: 0;     /* sombra inner */
+  --hover-outer-shadow-a: 0;
+  --hover-inner-shadow-a: 0;
+
+  /* sombras de viñeta (oscurecimiento) */
+  --shade1-a: 0.45;
+  --shade2-a: 0.25;
+
+  /* tipografía */
+  --title-shadow: rgba(0,0,0,.45);
+  --subtitle-shadow: rgba(0,0,0,.35);
+}
+
+html[data-theme="violet"] {
+  --bg1: #2b1a45;
+  --bg2: #151021;
+  --bg3: #07060a;
+  --text: #eae6f5;
+
+  --card-top: #1e1630;
+  --card-bot: #0f0b18;
+
+  --glow-color-rgb: 180,130,255;
+  --glow-alpha: 0.18;
+  --glow-opacity: 0.38;
+}
+
+html[data-theme="blue"] {
+  --bg1: #1b2a47;
+  --bg2: #0f1a2e;
+  --bg3: #050910;
+  --text: #eaf1ff;
+
+  --card-top:  #16223a;
+  --card-bot:  #0c1426;
+
+  --glow-color-rgb: 140,180,255;
+  --glow-alpha: 0.20;
+  --glow-opacity: 0.40;
+}
+
+html[data-theme="green"] {
+  --bg1: #1c4035;
+  --bg2: #102820;
+  --bg3: #07110d;
+  --text: #e6fff4;
+
+  --card-top:  #1a3a30;
+  --card-bot:  #0c1f19;
+
+  --glow-color-rgb: 120,255,180;
+  --glow-alpha: 0.18;
+  --glow-opacity: 0.36;
+}
+
+html[data-theme="red"] {
+  --bg1: #4a0f17;
+  --bg2: #25080c;
+  --bg3: #0d0304;
+  --text: #ffeaea;
+
+  --card-top:  #311016;
+  --card-bot:  #19080b;
+
+  --glow-color-rgb: 255,120,120;
+  --glow-alpha: 0.16;
+  --glow-opacity: 0.34;
+}
+
+html[data-theme="cyan"] {
+  --bg1: #0f3a45;
+  --bg2: #072125;
+  --bg3: #020b0c;
+  --text: #e3fdff;
+
+  --card-top:  #10363d;
+  --card-bot:  #071d22;
+
+  --glow-color-rgb: 90,255,240;
+  --glow-alpha: 0.18;
+  --glow-opacity: 0.36;
+}
+
+html[data-theme="orange"] {
+  --bg1: #4d2b00;
+  --bg2: #2b1600;
+  --bg3: #0f0800;
+  --text: #fff0e0;
+
+  --card-top:  #3b1e00;
+  --card-bot:  #1c0e00;
+
+  --glow-color-rgb: 255,180,90;
+  --glow-alpha: 0.16;
+  --glow-opacity: 0.34;
+}
+
+html[data-theme="yellow"] {
+  --bg1: #3a2f14;
+  --bg2: #1f1a0d;
+  --bg3: #090806;
+  --text: #fff9e6;
+
+  --card-top:  #322712;
+  --card-bot:  #1a1509;
+
+  --glow-color-rgb: 255,220,140;
+  --glow-alpha: 0.16;
+  --glow-opacity: 0.34;
+}
+
+html[data-theme="pink"] {
+  --bg1: #451536;
+  --bg2: #220a1b;
+  --bg3: #0a0309;
+  --text: #ffe6f2;
+
+  --card-top:  #321028;
+  --card-bot:  #150611;
+
+  --glow-color-rgb: 255,120,200;
+  --glow-alpha: 0.18;
+  --glow-opacity: 0.38;
+}
+
+html[data-theme="lavender"] {
+  --bg1: #5b5985;
+  --bg2: #3b3955;
+  --bg3: #1c1b27;
+  --text: #f6f5ff;
+
+  --card-top:  #454366;
+  --card-bot:  #2b2a3c;
+
+  --glow-color-rgb: 210,190,255;
+  --glow-alpha: 0.16;
+  --glow-opacity: 0.34;
+}
+
+
+/* =========================
+   ESTILOS BASE
+========================= */
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(1200px circle at 50% 40%,
+      var(--bg1) 0%, var(--bg2) 60%, var(--bg3) 100%);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  overflow-x: hidden;
+  color: var(--text);
+}
+
+/* Contenedor con perspectiva real + layout para múltiples cards */
+.scene {
+  perspective: var(--perspective);
+  perspective-origin: 50% 40%;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+}
+
+/* =========================
+   CARD + CAPAS
+========================= */
+
+.card {
+  position: relative;
+  width: 340px;
+  height: 460px;
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--card-top) 0%, var(--card-bot) 100%);
+  box-shadow:
+    var(--sx) var(--sy) var(--shadow-blur) rgba(0,0,0,var(--outer-shadow-a)),
+    0 8px var(--shadow-inner-blur) rgba(0,0,0,var(--inner-shadow-a)) inset;
+  transform-style: preserve-3d;
+  will-change: transform, box-shadow;
+  transition: transform .28s cubic-bezier(.2,.8,.2,1),
+              box-shadow .22s;
+}
+
+/* Borde suave iluminado según el mouse */
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    radial-gradient(var(--edge-radius) circle at var(--mx) var(--my),
+      rgba(255,255,255,var(--edge-alpha)), rgba(255,255,255,0) 60%);
+  mix-blend-mode: screen;
+  opacity: .9;
+  transition: opacity .2s;
+}
+
+.card.is-hovering {
+  box-shadow:
+    var(--sx) var(--sy) calc(var(--shadow-blur) + 10px) rgba(0,0,0,var(--hover-outer-shadow-a)),
+    0 10px calc(var(--shadow-inner-blur) + 2px) rgba(0,0,0,var(--hover-inner-shadow-a)) inset;
+  transition-duration: .12s;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+/* Capa glow dedicada */
+.glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(var(--glow-radius) circle at var(--mx) var(--my),
+      rgba(var(--glow-color-rgb), var(--glow-alpha)) 0%,
+      rgba(var(--glow-color-rgb), 0) 60%);
+  mix-blend-mode: lighten;
+  opacity: var(--glow-opacity);
+  transition: opacity .25s;
+  z-index: 1;
+}
+
+/* Sombra interior para dar volumen */
+.shade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(90% 70% at 50% 120%,
+      rgba(0,0,0,var(--shade1-a)) 0%, rgba(0,0,0,0) 60%),
+    radial-gradient(130% 90% at -10% -10%,
+      rgba(0,0,0,var(--shade2-a)) 0%, rgba(0,0,0,0) 55%);
+  z-index: 1;
+}
+
+/* =========================
+   CONTENIDO
+========================= */
+
+.content {
+  position: absolute;
+  inset: 0;
+  padding: 28px;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+.title {
+  transform: translateZ(38px);
+  font-size: 1.9rem;
+  font-weight: 700;
+  letter-spacing: .3px;
+  margin: 0 0 .4rem 0;
+  text-shadow: 0 8px 18px var(--title-shadow);
+}
+
+.subtitle {
+  transform: translateZ(24px);
+  opacity: .9;
+  font-size: 1.02rem;
+  line-height: 1.35rem;
+  max-width: 22ch;
+  margin: 0;
+  filter: drop-shadow(0 6px 16px var(--subtitle-shadow));
+}
+
+/* Decor con profundidad extra */
+.badge {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(99,102,241,.12);
+  border: 1px solid rgba(99,102,241,.35);
+  color: #c7d2fe;
+  font-weight: 600;
+  font-size: .78rem;
+  letter-spacing: .3px;
+  transform: translateZ(52px);
+  backdrop-filter: blur(8px);
+}
+
+/* CARD CON IMAGEN DE FONDO */
+.card--image {
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.45) 0%,
+      rgba(0,0,0,0.55) 60%,
+      rgba(0,0,0,0.65) 100%
+    ),
+    var(--card-image) center/cover no-repeat;
+  color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+}
