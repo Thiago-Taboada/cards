@@ -33,17 +33,6 @@
   --glow-alpha: 0.20;         /* intensidad del glow */
   --glow-opacity: 0.40;       /* opacidad total de la capa glow */
 
-  /* sombras */
-  --outer-shadow-a: 0.55;     /* sombra grande */
-  --inner-shadow-a: 0.45;     /* sombra inner */
-  --hover-outer-shadow-a: 0.58;
-  --hover-inner-shadow-a: 0.50;
-
-  --outer-shadow-a: 0;     /* sombra grande */
-  --inner-shadow-a: 0;     /* sombra inner */
-  --hover-outer-shadow-a: 0;
-  --hover-inner-shadow-a: 0;
-
   /* sombras de viñeta (oscurecimiento) */
   --shade1-a: 0.45;
   --shade2-a: 0.25;
@@ -222,9 +211,6 @@ body {
   border-radius: var(--card-radius);
   overflow: hidden;
   background: linear-gradient(180deg, var(--card-top) 0%, var(--card-bot) 100%);
-  box-shadow:
-    var(--sx) var(--sy) var(--shadow-blur) rgba(0,0,0,var(--outer-shadow-a)),
-    0 8px var(--shadow-inner-blur) rgba(0,0,0,var(--inner-shadow-a)) inset;
   transform-style: preserve-3d;
   will-change: transform, box-shadow;
   transition: transform .28s cubic-bezier(.2,.8,.2,1),
@@ -247,9 +233,6 @@ body {
 }
 
 .card.is-hovering {
-  box-shadow:
-    var(--sx) var(--sy) calc(var(--shadow-blur) + 10px) rgba(0,0,0,var(--hover-outer-shadow-a)),
-    0 10px calc(var(--shadow-inner-blur) + 2px) rgba(0,0,0,var(--hover-inner-shadow-a)) inset;
   transition-duration: .12s;
 }
 
